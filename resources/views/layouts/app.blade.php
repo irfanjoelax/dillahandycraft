@@ -53,6 +53,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item me-3">
+                                    <a class="nav-link" href="{{ url('/admin/kategori') }}">
+                                        <i class="fa-solid fa-rectangle-list"></i>
+                                        <span class="ms-1">Kategori</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item me-3">
                                     <a class="nav-link" href="{{ url('/') }}">
                                         <i class="fa-solid fa-box-open"></i>
                                         <span class="ms-1">Barang</span>
@@ -173,6 +179,9 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <!-- Javascript -->
+        @include('sweetalert::alert')
     </div>
 </body>
 
