@@ -22,7 +22,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 Route::get('/admin/dashboard', [App\Http\Controllers\Role\Admin\DashboardController::class, 'index']);
 Route::resource('/admin/kategori', App\Http\Controllers\Role\Admin\KategoriController::class);
+Route::get('/admin/pengaturan', [App\Http\Controllers\Role\Admin\PengaturanController::class, 'index']);
+Route::post('/admin/pengaturan', [App\Http\Controllers\Role\Admin\PengaturanController::class, 'update']);
 
 Route::get('/pelanggan/dashboard', [App\Http\Controllers\Role\Pelanggan\DashboardController::class, 'index']);

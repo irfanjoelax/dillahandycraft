@@ -148,7 +148,7 @@
                                             </a>
                                         @endif
                                         @if (Auth::user()->level == 'admin')
-                                            <a class="dropdown-item" href="{{ url('') }}">
+                                            <a class="dropdown-item" href="{{ url('/admin/pengaturan') }}">
                                                 <i class="fa-solid fa-gear"></i>
                                                 <span class="ms-1">Pengaturan</span>
                                             </a>
