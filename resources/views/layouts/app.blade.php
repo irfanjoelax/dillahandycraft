@@ -16,6 +16,9 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <!-- Font Awesome -->
+    <link href="{{ asset('css/fontawesome/css/all.min.css') }}" rel="stylesheet">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -27,9 +30,6 @@
                 <a class="navbar-brand d-flex gap-2 align-items-center me-4" href="{{ url('/') }}">
                     <img src="{{ asset('img/logo.png') }}" alt="" width="60" height="48"
                         class="d-inline-block align-text-top">
-                    <span class="fw-bold">
-                        {{ str_replace('-', ' ', env('APP_NAME')) }}
-                    </span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -42,108 +42,124 @@
                     <ul class="navbar-nav me-auto">
                         @auth
                             @if (Auth::user()->level == 'pelanggan')
-                                <form method="POST" action="" class="d-flex" role="search">
-                                    @csrf
-                                    <input name="keyword" size="40" class="form-control me-2" type="search"
-                                        placeholder="Search Product...">
-                                </form>
+                                @include('layouts._form-search')
                             @endif
 
                             @if (Auth::user()->level == 'admin')
                                 <li class="nav-item me-3">
                                     <a class="nav-link" href="{{ url('/') }}">
-                                        Beranda
+                                        <i class="fa-solid fa-fire-flame-curved"></i>
+                                        <span class="ms-1">Beranda</span>
                                     </a>
                                 </li>
                                 <li class="nav-item me-3">
                                     <a class="nav-link" href="{{ url('/') }}">
-                                        Barang
+                                        <i class="fa-solid fa-box-open"></i>
+                                        <span class="ms-1">Barang</span>
                                     </a>
                                 </li>
                                 <li class="nav-item me-3">
                                     <a class="nav-link" href="{{ url('/') }}">
-                                        Biaya Pengiriman
+                                        <i class="fa-solid fa-truck-fast"></i>
+                                        <span class="ms-1">Biaya Pengiriman</span>
                                     </a>
                                 </li>
                                 <li class="nav-item me-3">
                                     <a class="nav-link" href="{{ url('/') }}">
-                                        Transaksi
+                                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                                        <span class="ms-1">Transaksi</span>
                                     </a>
                                 </li>
                                 <li class="nav-item me-3">
                                     <a class="nav-link" href="{{ url('/') }}">
-                                        Komentar
+                                        <i class="fa-solid fa-comments"></i>
+                                        <span class="ms-1">Komentar</span>
                                     </a>
                                 </li>
                             @endif
                         @endauth
+
+                        @guest
+                            @include('layouts._form-search')
+                        @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         @auth
                             @if (Auth::user()->level == 'pelanggan')
-                                <li class="nav-item me-3">
-                                    <a class="nav-link" href="{{ url('/') }}">
-                                        Beranda
-                                    </a>
-                                </li>
-                                <li class="nav-item me-3">
-                                    <a class="nav-link" href="{{ url('/') }}">
-                                        Profile
-                                    </a>
-                                </li>
-                                <li class="nav-item me-3">
-                                    <a class="nav-link" href="{{ url('/') }}">
-                                        Cara Pembelian
-                                    </a>
-                                </li>
+                                @include('layouts._nav-pelanggan')
                             @endif
                         @endauth
+
+                        @guest
+                            @include('layouts._nav-pelanggan')
+                        @endguest
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <li class="nav-item me-3">
+                                    <a class="nav-link" href="{{ route('login') }}">
+                                        <i class="fa-solid fa-right-to-bracket"></i>
+                                        <span class="ms-1">
+                                            {{ __('Login') }}
+                                        </span>
+                                    </a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">
+                                        <i class="fa-solid fa-user-plus"></i>
+                                        <span class="ms-1">
+                                            {{ __('Register') }}
+                                        </span>
+                                    </a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    <i class="fa-solid fa-circle-user"></i>
+                                    <span class="ms-1">
+                                        {{ Auth::user()->name }}
+                                    </span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     @auth
                                         @if (Auth::user()->level == 'pelanggan')
                                             <a class="dropdown-item" href="{{ url('') }}">
-                                                Dashboard
+                                                <i class="fa-solid fa-fire-flame-curved"></i>
+                                                <span class="ms-1">Dashboard</span>
                                             </a>
                                             <a class="dropdown-item" href="{{ url('') }}">
-                                                Keranjang
+                                                <i class="fa-solid fa-basket-shopping"></i>
+                                                <span class="ms-1">Keranjang</span>
                                             </a>
                                         @endif
                                         @if (Auth::user()->level == 'admin')
                                             <a class="dropdown-item" href="{{ url('') }}">
-                                                Pengaturan
+                                                <i class="fa-solid fa-gear"></i>
+                                                <span class="ms-1">Pengaturan</span>
                                             </a>
                                         @endif
                                     @endauth
                                     <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                        <span class="ms-1">
+                                            {{ __('Logout') }}
+                                        </span>
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
                                         @csrf
                                     </form>
                                 </div>
