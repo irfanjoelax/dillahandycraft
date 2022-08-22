@@ -16,10 +16,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -28,7 +24,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex gap-2 align-items-center" href="{{ url('/') }}">
+                <a class="navbar-brand d-flex gap-2 align-items-center me-4" href="{{ url('/') }}">
                     <img src="{{ asset('img/logo.png') }}" alt="" width="60" height="48"
                         class="d-inline-block align-text-top">
                     <span class="fw-bold">
@@ -44,11 +40,66 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        @auth
+                            @if (Auth::user()->level == 'pelanggan')
+                                <form method="POST" action="" class="d-flex" role="search">
+                                    @csrf
+                                    <input name="keyword" size="40" class="form-control me-2" type="search"
+                                        placeholder="Search Product...">
+                                </form>
+                            @endif
 
+                            @if (Auth::user()->level == 'admin')
+                                <li class="nav-item me-3">
+                                    <a class="nav-link" href="{{ url('/') }}">
+                                        Beranda
+                                    </a>
+                                </li>
+                                <li class="nav-item me-3">
+                                    <a class="nav-link" href="{{ url('/') }}">
+                                        Barang
+                                    </a>
+                                </li>
+                                <li class="nav-item me-3">
+                                    <a class="nav-link" href="{{ url('/') }}">
+                                        Biaya Pengiriman
+                                    </a>
+                                </li>
+                                <li class="nav-item me-3">
+                                    <a class="nav-link" href="{{ url('/') }}">
+                                        Transaksi
+                                    </a>
+                                </li>
+                                <li class="nav-item me-3">
+                                    <a class="nav-link" href="{{ url('/') }}">
+                                        Komentar
+                                    </a>
+                                </li>
+                            @endif
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        @auth
+                            @if (Auth::user()->level == 'pelanggan')
+                                <li class="nav-item me-3">
+                                    <a class="nav-link" href="{{ url('/') }}">
+                                        Beranda
+                                    </a>
+                                </li>
+                                <li class="nav-item me-3">
+                                    <a class="nav-link" href="{{ url('/') }}">
+                                        Profile
+                                    </a>
+                                </li>
+                                <li class="nav-item me-3">
+                                    <a class="nav-link" href="{{ url('/') }}">
+                                        Cara Pembelian
+                                    </a>
+                                </li>
+                            @endif
+                        @endauth
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -70,6 +121,22 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    @auth
+                                        @if (Auth::user()->level == 'pelanggan')
+                                            <a class="dropdown-item" href="{{ url('') }}">
+                                                Dashboard
+                                            </a>
+                                            <a class="dropdown-item" href="{{ url('') }}">
+                                                Keranjang
+                                            </a>
+                                        @endif
+                                        @if (Auth::user()->level == 'admin')
+                                            <a class="dropdown-item" href="{{ url('') }}">
+                                                Pengaturan
+                                            </a>
+                                        @endif
+                                    @endauth
+                                    <hr class="dropdown-divider">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
