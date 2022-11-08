@@ -21,12 +21,23 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .btn-primary {
+            color: white;
+        }
+
+        .btn-primary:hover {
+            color: white;
+        }
+    </style>
+
+    @yield('style')
 </head>
 
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand d-flex gap-2 align-items-center me-4" href="{{ url('/') }}">
                     <img src="{{ asset('img/logo.png') }}" alt="" width="60" height="48"
                         class="d-inline-block align-text-top">
@@ -47,7 +58,7 @@
 
                             @if (Auth::user()->level == 'admin')
                                 <li class="nav-item me-3">
-                                    <a class="nav-link" href="{{ url('/') }}">
+                                    <a class="nav-link" href="{{ url('/admin/dashboard') }}">
                                         <i class="fa-solid fa-fire-flame-curved"></i>
                                         <span class="ms-1">Beranda</span>
                                     </a>
@@ -59,7 +70,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item me-3">
-                                    <a class="nav-link" href="{{ url('/') }}">
+                                    <a class="nav-link" href="{{ url('/admin/barang') }}">
                                         <i class="fa-solid fa-box-open"></i>
                                         <span class="ms-1">Barang</span>
                                     </a>
@@ -138,11 +149,11 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     @auth
                                         @if (Auth::user()->level == 'pelanggan')
-                                            <a class="dropdown-item" href="{{ url('') }}">
+                                            <a class="dropdown-item" href="{{ url('/pelanggan/dashboard') }}">
                                                 <i class="fa-solid fa-fire-flame-curved"></i>
                                                 <span class="ms-1">Dashboard</span>
                                             </a>
-                                            <a class="dropdown-item" href="{{ url('') }}">
+                                            <a class="dropdown-item" href="{{ url('/pelanggan/keranjang') }}">
                                                 <i class="fa-solid fa-basket-shopping"></i>
                                                 <span class="ms-1">Keranjang</span>
                                             </a>
@@ -182,6 +193,7 @@
 
         <!-- Javascript -->
         @include('sweetalert::alert')
+        @yield('script')
     </div>
 </body>
 

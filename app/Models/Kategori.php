@@ -15,4 +15,9 @@ class Kategori extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function barangs()
+    {
+        return $this->hasMany('App\Models\Barang');
+    }
 }

@@ -2,7 +2,19 @@
 
 @section('content')
     <div class="container">
-        <h1 class="display-2 fw-bold">Selamat Datang</h1>
-        <h1>Halaman Cara Pembelian</h1>
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        Featured
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

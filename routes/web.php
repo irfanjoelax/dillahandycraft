@@ -3,29 +3,29 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// FRONT END WEB
+Route::get('/', [App\Http\Controllers\Web\BerandaController::class, 'index']);
+Route::get('/profile', [App\Http\Controllers\Web\ProfileTokoController::class, 'index']);
+Route::get('/cara-pembelian', [App\Http\Controllers\Web\CaraPembelianController::class, 'index']);
+Route::get('/detail/barang/{slug}', [App\Http\Controllers\Web\DetailBarangController::class, 'index']);
 
-Route::get('/', function () {
-    return view('beranda');
-});
+// SHIPPING RAJA ONGKIR
+Route::get('/cekongkir/get-kota/{id}', [App\Http\Controllers\Web\CekOngkirController::class, 'getKota']);
+Route::get('/cekongkir/{idKota}/{kurir}', [App\Http\Controllers\Web\CekOngkirController::class, 'checkOngkir']);
 
+// AUTHENTICATION ROUTE
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
+// ROLE ADMIN
 Route::get('/admin/dashboard', [App\Http\Controllers\Role\Admin\DashboardController::class, 'index']);
 Route::resource('/admin/kategori', App\Http\Controllers\Role\Admin\KategoriController::class);
+Route::resource('/admin/barang', App\Http\Controllers\Role\Admin\BarangController::class);
 Route::get('/admin/pengaturan', [App\Http\Controllers\Role\Admin\PengaturanController::class, 'index']);
 Route::post('/admin/pengaturan', [App\Http\Controllers\Role\Admin\PengaturanController::class, 'update']);
 
+// ROLE PELANGGAN
 Route::get('/pelanggan/dashboard', [App\Http\Controllers\Role\Pelanggan\DashboardController::class, 'index']);
+Route::get('/pelanggan/keranjang', [App\Http\Controllers\Role\Pelanggan\KeranjangController::class, 'index']);
+Route::post('/pelanggan/keranjang/store/{id}', [App\Http\Controllers\Role\Pelanggan\KeranjangController::class, 'store']);
+Route::get('/pelanggan/keranjang/delete/{id}', [App\Http\Controllers\Role\Pelanggan\KeranjangController::class, 'delete']);
