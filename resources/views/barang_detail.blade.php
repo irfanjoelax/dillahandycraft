@@ -62,19 +62,66 @@
                 <h3 class="fw-bold text-warning">
                     Rp. {{ number_format($barang->harga) }}
                 </h3>
-                <p class="text-muted mt-3">
-                    {!! $barang->deskripsi !!}
-                </p>
-                <p class="card-text d-flex align-items-center gap-4 mb-2 text-black-50">
+                <p class="card-text d-flex align-items-center gap-4 mt-3 text-black-50">
                     <span class="d-flex align-items-center gap-2">
                         <i class="fa-solid fa-eye"></i>
                         {{ $barang->dilihat }}x
                     </span>
-                    <span class="d-flex align-items-center gap-2">
-                        <i class="fa-solid fa-comments"></i>
-                        10
+                    <span class="text-warning">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
                     </span>
                 </p>
+                <p class="text-muted mt-3">
+                    {!! $barang->deskripsi !!}
+                </p>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <h4 class="fw-bold">Produk Serupa</h4>
+                <h6 class="text-muted m-0">Mungkin Produk Sejenis Yang Kamu Cari</h6>
+            </div>
+            @forelse ($barangs as $barang)
+                <div class="col-md-3 col-sm-6 col-12 mb-3">
+                    <div class="card border-0 shadow-sm">
+                        <img src="{{ asset('storage/barang/' . $barang->foto) }}" class="card-img-top">
+                        <div class="card-body">
+                            <div
+                                class="card-text d-flex align-items-center justify-content-between gap-4 mb-2 text-black-50">
+                                <small class="d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-eye"></i>
+                                    {{ $barang->dilihat }}x
+                                </small>
+                                <span class="text-warning">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                            </div>
+                            <h4 class="card-title fw-bold">
+                                {{ $barang->nama }}
+                            </h4>
+                            <h5 class="fw-semibold">Rp. {{ number_format($barang->harga) }}</h5>
+                            <a href="{{ url('/detail/barang/' . $barang->slug, []) }}" class="btn w-100 btn-primary mt-3">
+                                Detail Barang
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <div class="col-md-6 col-12 mb-3">
+                    <img src="{{ asset('img/empty.svg') }}" class="img-fluid">
+                </div>
+                <div class="col-md-6 col-12 mb-3 align-self-center text-sm-start text-center">
+                    <h1 class="display-3 fw-semibold">Oopss!</h1>
+                    <h4 class="text-black-50">Barang Dengan Kategori Serupa Masih Kosong</h4>
+                </div>
+            @endforelse
         </div>
     @endsection

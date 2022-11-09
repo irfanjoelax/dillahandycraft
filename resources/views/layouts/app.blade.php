@@ -84,21 +84,15 @@
                                     </a>
                                 </li>
                                 <li class="nav-item me-3">
-                                    <a class="nav-link" href="{{ url('/') }}">
-                                        <i class="fa-solid fa-truck-fast"></i>
-                                        <span class="ms-1">Biaya Pengiriman</span>
+                                    <a class="nav-link" href="{{ url('/admin/pelanggan') }}">
+                                        <i class="fa-solid fa-users"></i>
+                                        <span class="ms-1">Pelanggan</span>
                                     </a>
                                 </li>
                                 <li class="nav-item me-3">
-                                    <a class="nav-link" href="{{ url('/') }}">
+                                    <a class="nav-link" href="{{ url('/admin/pembelian') }}">
                                         <i class="fa-solid fa-file-invoice-dollar"></i>
-                                        <span class="ms-1">Transaksi</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item me-3">
-                                    <a class="nav-link" href="{{ url('/') }}">
-                                        <i class="fa-solid fa-comments"></i>
-                                        <span class="ms-1">Komentar</span>
+                                        <span class="ms-1">Pembelian</span>
                                     </a>
                                 </li>
                             @endif

@@ -19,10 +19,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // ROLE ADMIN
 Route::get('/admin/dashboard', [App\Http\Controllers\Role\Admin\DashboardController::class, 'index']);
+Route::get('/admin/pelanggan', [App\Http\Controllers\Role\Admin\PelangganController::class, 'index']);
 Route::resource('/admin/kategori', App\Http\Controllers\Role\Admin\KategoriController::class);
 Route::resource('/admin/barang', App\Http\Controllers\Role\Admin\BarangController::class);
 Route::get('/admin/pengaturan', [App\Http\Controllers\Role\Admin\PengaturanController::class, 'index']);
 Route::post('/admin/pengaturan', [App\Http\Controllers\Role\Admin\PengaturanController::class, 'update']);
+Route::get('/admin/pembelian', [App\Http\Controllers\Role\Admin\PembelianController::class, 'index']);
+Route::get('/admin/pembelian/{id}/detail', [App\Http\Controllers\Role\Admin\PembelianController::class, 'detail']);
+Route::get('/admin/pembelian/{id}/download', [App\Http\Controllers\Role\Admin\PembelianController::class, 'download']);
+Route::get('/admin/pembelian/{id}/{status}', [App\Http\Controllers\Role\Admin\PembelianController::class, 'update_status']);
 
 // ROLE PELANGGAN
 Route::get('/pelanggan/dashboard', [App\Http\Controllers\Role\Pelanggan\DashboardController::class, 'index']);

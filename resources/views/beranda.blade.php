@@ -41,16 +41,20 @@
                             <div class="card border-0 shadow-sm">
                                 <img src="{{ asset('storage/barang/' . $barang->foto) }}" class="card-img-top">
                                 <div class="card-body">
-                                    <p class="card-text d-flex align-items-center gap-4 mb-2 text-black-50">
+                                    <div
+                                        class="card-text d-flex align-items-center justify-content-between gap-4 mb-2 text-black-50">
                                         <small class="d-flex align-items-center gap-2">
                                             <i class="fa-solid fa-eye"></i>
                                             {{ $barang->dilihat }}x
                                         </small>
-                                        <small class="d-flex align-items-center gap-2">
-                                            <i class="fa-solid fa-comments"></i>
-                                            10
-                                        </small>
-                                    </p>
+                                        <span class="text-warning">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </span>
+                                    </div>
                                     <h4 class="card-title fw-bold">
                                         {{ $barang->nama }}
                                     </h4>
