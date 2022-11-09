@@ -63,25 +63,27 @@
 
                     @if ($keranjangs->isNotEmpty())
                         <div class="card-body">
-                            <form class="row g-3" action="" method="POST">
+                            <form class="row g-3" action="{{ url('/pelanggan/checkout') }}" method="POST">
                                 @csrf
+                                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                                 <div class="col-md-6">
                                     <label for="nama" class="form-label">Nama Lengkap</label>
                                     <input type="text" class="form-control" name="nama"
-                                        value="{{ Auth::user()->name }}">
+                                        value="{{ Auth::user()->name }}" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control" name="email"
-                                        value="{{ Auth::user()->email }}">
+                                        value="{{ Auth::user()->email }}" required>
                                 </div>
                                 <div class="col-12">
                                     <label for="alamat" class="form-label">Alamat Penerima</label>
-                                    <input type="text" class="form-control" name="alamat" placeholder="1234 Main St">
+                                    <input type="text" class="form-control" name="alamat" placeholder="1234 Main St"
+                                        required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputCity" class="form-label">Provinsi</label>
-                                    <select name="provinsi" class="form-select">
+                                    <select name="provinsi" class="form-select" required>
                                         <option value="" selected>Pilih...</option>
                                         @foreach ($provinces as $province => $value)
                                             <option value="{{ $province }}">{{ $value }}</option>
@@ -90,11 +92,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="kota" class="form-label">Kota</label>
-                                    <select name="kota" class="form-select"></select>
+                                    <select name="kota" class="form-select" required></select>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="kurir" class="form-label">Kurir</label>
-                                    <select name="kurir" class="form-select">
+                                    <select name="kurir" class="form-select" required>
                                         <option value="" selected>Pilih...</option>
                                         <option value="jne">JNE</option>
                                         <option value="tiki">TIKI</option>
@@ -105,24 +107,24 @@
                                     <label for="kurir" class="form-label">Total Keranjang</label>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">Rp.</span>
-                                        <input type="text" class="form-control text-end" value="{{ $totalKeranjang }}"
-                                            required readonly>
+                                        <input type="text" name="total" class="form-control text-end"
+                                            value="{{ $totalKeranjang }}" required readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <label for="kurir" class="form-label">Ongkos Kirim</label>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">Rp.</span>
-                                        <input type="text" class="form-control text-end" id="ongkir" placeholder="0"
-                                            required readonly>
+                                        <input type="text" name="ongkir" class="form-control text-end" id="ongkir"
+                                            placeholder="0" required readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="kurir" class="form-label">Total Pembayaran</label>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">Rp.</span>
-                                        <input type="text" class="form-control text-end" id="grand_total"
-                                            placeholder="{{ $totalKeranjang }}" required readonly>
+                                        <input type="text" class="form-control text-end" name="grand_total"
+                                            id="grand_total" placeholder="{{ $totalKeranjang }}" required readonly>
                                     </div>
                                 </div>
                                 <div class="col-12">

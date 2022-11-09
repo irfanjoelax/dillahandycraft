@@ -18,12 +18,13 @@ class CreatePembeliansTable extends Migration
             $table->string('nama');
             $table->string('email');
             $table->text('alamat');
-            $table->unsignedInteger('provinsi_id');
-            $table->unsignedInteger('kota_id');
+            $table->unsignedInteger('provinsi');
+            $table->unsignedInteger('kota');
             $table->string('kurir');
             $table->unsignedInteger('total');
             $table->unsignedInteger('ongkir');
             $table->unsignedInteger('grand_total');
+            $table->string('bukti_bayar');
             $table->string('status');
             $table->timestamps();
         });

@@ -29,3 +29,4 @@ Route::get('/pelanggan/dashboard', [App\Http\Controllers\Role\Pelanggan\Dashboar
 Route::get('/pelanggan/keranjang', [App\Http\Controllers\Role\Pelanggan\KeranjangController::class, 'index']);
 Route::post('/pelanggan/keranjang/store/{id}', [App\Http\Controllers\Role\Pelanggan\KeranjangController::class, 'store']);
 Route::get('/pelanggan/keranjang/delete/{id}', [App\Http\Controllers\Role\Pelanggan\KeranjangController::class, 'delete']);
+Route::post('/pelanggan/checkout', [App\Http\Controllers\Role\Pelanggan\CheckoutController::class, 'store']);
