@@ -15,4 +15,19 @@ class Pembelian extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function pembelian_details()
+    {
+        return $this->hasMany('App\Models\PembelianDetail');
+    }
+
+    public function provinsi()
+    {
+        return $this->hasOne('App\Models\Provinsi', 'id', 'provinsi_id');
+    }
+
+    public function kota()
+    {
+        return $this->hasOne('App\Models\Kota', 'id', 'kota_id');
+    }
 }

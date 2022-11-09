@@ -15,4 +15,9 @@ class PembelianDetail extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function barang()
+    {
+        return $this->hasOne('App\Models\Barang', 'id', 'barang_id');
+    }
 }

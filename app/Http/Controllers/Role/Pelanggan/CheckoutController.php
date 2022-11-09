@@ -19,6 +19,7 @@ class CheckoutController extends Controller
         $kota     = Kota::where('city_id', $request->kota)->first();
 
         $pembelian = Pembelian::create([
+            'user_id'     => $request->user_id,
             'nama'        => $request->nama,
             'email'       => $request->email,
             'alamat'      => $request->alamat,
@@ -28,7 +29,7 @@ class CheckoutController extends Controller
             'total'       => $request->total,
             'ongkir'      => $request->ongkir,
             'grand_total' => $request->grand_total,
-            'status'      => 'Proses',
+            'status'      => 'Menunggu Pembayaran',
         ]);
 
         $keranjangs = Keranjang::where('user_id', $request->user_id)->get();

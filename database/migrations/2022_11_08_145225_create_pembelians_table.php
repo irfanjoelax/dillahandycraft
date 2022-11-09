@@ -15,16 +15,17 @@ class CreatePembeliansTable extends Migration
     {
         Schema::create('pembelians', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->string('nama');
             $table->string('email');
             $table->text('alamat');
-            $table->unsignedInteger('provinsi');
-            $table->unsignedInteger('kota');
+            $table->foreignId('provinsi_id');
+            $table->foreignId('kota_id');
             $table->string('kurir');
             $table->unsignedInteger('total');
             $table->unsignedInteger('ongkir');
             $table->unsignedInteger('grand_total');
-            $table->string('bukti_bayar');
+            $table->string('bukti_bayar')->nullable()->default(null);
             $table->string('status');
             $table->timestamps();
         });

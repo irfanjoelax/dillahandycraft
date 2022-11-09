@@ -17,7 +17,6 @@ class KeranjangController extends Controller
         $provinces = Provinsi::pluck('name', 'province_id');
         $keranjangs = Keranjang::with('barang')
             ->where('user_id', Auth::id())
-            ->where('is_checkout', 'no')
             ->get();
 
         return view('role.pelanggan.keranjang', [

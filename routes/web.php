@@ -30,3 +30,5 @@ Route::get('/pelanggan/keranjang', [App\Http\Controllers\Role\Pelanggan\Keranjan
 Route::post('/pelanggan/keranjang/store/{id}', [App\Http\Controllers\Role\Pelanggan\KeranjangController::class, 'store']);
 Route::get('/pelanggan/keranjang/delete/{id}', [App\Http\Controllers\Role\Pelanggan\KeranjangController::class, 'delete']);
 Route::post('/pelanggan/checkout', [App\Http\Controllers\Role\Pelanggan\CheckoutController::class, 'store']);
+Route::get('/pelanggan/pembelian/{id}/detail', [App\Http\Controllers\Role\Pelanggan\DashboardController::class, 'detail']);
+Route::post('/pelanggan/pembelian/{id}/upload', [App\Http\Controllers\Role\Pelanggan\DashboardController::class, 'upload']);

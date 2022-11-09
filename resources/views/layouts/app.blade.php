@@ -29,6 +29,14 @@
         .btn-primary:hover {
             color: white;
         }
+
+        .btn-success {
+            color: white;
+        }
+
+        .btn-success:hover {
+            color: white;
+        }
     </style>
 
     @yield('style')
