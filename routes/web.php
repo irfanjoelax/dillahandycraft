@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // FRONT END WEB
 Route::get('/', [App\Http\Controllers\Web\BerandaController::class, 'index']);
+Route::get('/produk', [App\Http\Controllers\Web\ProdukController::class, 'index']);
 Route::get('/profile', [App\Http\Controllers\Web\ProfileTokoController::class, 'index']);
 Route::get('/cara-pembelian', [App\Http\Controllers\Web\CaraPembelianController::class, 'index']);
 Route::get('/detail/barang/{slug}', [App\Http\Controllers\Web\DetailBarangController::class, 'index']);
