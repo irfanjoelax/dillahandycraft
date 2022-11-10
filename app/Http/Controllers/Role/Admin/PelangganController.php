@@ -21,7 +21,7 @@ class PelangganController extends Controller
         return view('role.admin.pelanggan.index', [
             'request'    => $request,
             'users'      => $users,
-            'total_user' => User::count(),
+            'total_user' => User::where('level', 'pelanggan')->count(),
         ]);
     }
 }
