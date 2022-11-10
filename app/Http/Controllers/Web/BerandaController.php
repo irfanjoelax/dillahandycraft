@@ -28,7 +28,8 @@ class BerandaController extends Controller
         return view('beranda', [
             'request'   => $request,
             'kategoris' => Kategori::latest()->get(),
-            'barangs'   => $barangs->latest()->paginate(10),
+            'barangs'   => $barangs->latest()->paginate(12),
+            'rekomendasis'   => Barang::orderBy('dilihat', 'DESC')->limit(4)->get(),
         ]);
     }
 }

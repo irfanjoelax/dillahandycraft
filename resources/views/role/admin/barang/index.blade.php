@@ -23,28 +23,32 @@
                 <table class="table table-bordered align-middle">
                     <thead>
                         <tr>
-                            <th class="text-center" scope="col">#</th>
-                            <th scope="col">Foto</th>
-                            <th scope="col">Nama barang</th>
-                            <th scope="col">Dilihat</th>
-                            <th scope="col">Harga</th>
-                            <th scope="col" class="text-center">Aksi</th>
+                            <th class="text-center" width="7%">#</th>
+                            <th class="text-center" width="15%">Foto</th>
+                            <th class="text-start" width="50%">Nama barang</th>
+                            <th class="text-center" width="8%">Dilihat</th>
+                            <th class="text-center" width="7%">Diskon</th>
+                            <th class="text-center" width="13%">Aksi</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         @forelse ($barangs as $barang)
                             <tr>
-                                <td width="5%" class="text-center">
+                                <td class="text-center">
                                     {{ ($barangs->currentPage() - 1) * $barangs->perPage() + $loop->iteration }}
                                 </td>
-                                <td width="15%" class="text-center">
+                                <td class="text-center">
                                     <img src="{{ asset('storage/barang/' . $barang->foto) }}" width="100"
                                         class="rounded-3">
                                 </td>
-                                <td width="%">{{ $barang->nama }}</td>
-                                <td width="10%" class="text-end">{{ number_format($barang->dilihat) }}</td>
-                                <td width="15%" class="text-end">{{ 'Rp.  ' . number_format($barang->harga) }}</td>
-                                <td width="15%" class="text-center">
+                                <td class="">
+                                    <h5 class="m-0 fw-semibold">{{ $barang->nama }}</h5>
+                                    {{ 'Rp.  ' . number_format($barang->harga) }}
+                                </td>
+                                <td class="text-center">{{ number_format($barang->dilihat) }}</td>
+                                <td class="text-center">{{ $barang->diskon }} %</td>
+                                <td class="text-center">
                                     <a href="{{ url('admin/barang/' . $barang->id . '/edit') }}"
                                         class="btn btn-sm btn-warning">
                                         Ubah

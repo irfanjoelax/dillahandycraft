@@ -30,11 +30,17 @@ class KeranjangController extends Controller
     {
         $barang = Barang::find($id);
 
+        $harga = $barang->harga;
+
+        if ($barang->diskon != 0) {
+            $harga = $barang->harga - $barang->harga * ($barang->diskon / 100);
+        }
+
         Keranjang::create([
             'user_id'   => Auth::id(),
             'barang_id' => $barang->id,
             'jumlah'    => $request->jumlah,
-            'total'     => $request->jumlah * $barang->harga,
+            'total'     => $request->jumlah * $harga,
         ]);
 
         Alert::success('Sukses', 'Barang Berhasil Dimasukkan Keranjang');

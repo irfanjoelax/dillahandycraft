@@ -84,11 +84,22 @@
                                 <th width="23%" class="text-center">Sub Total</th>
                             </thead>
                             <tbody>
+                                @php
+                                    function cek_diskon($diskon, $harga)
+                                    {
+                                        if ($diskon == 0) {
+                                            return $harga;
+                                        } else {
+                                            return $harga - $harga * ($diskon / 100);
+                                        }
+                                    }
+                                @endphp
                                 @foreach ($data->pembelian_details as $item)
                                     <tr>
                                         <td class="text-start">{{ $item->barang->nama }}</td>
                                         <td class="text-start">
-                                            Rp. <span class="float-end">{{ number_format($item->barang->harga) }}</span>
+                                            Rp. <span
+                                                class="float-end">{{ number_format(cek_diskon($item->barang->diskon, $item->barang->harga)) }}</span>
                                         </td>
                                         <td class="text-center">{{ $item->jumlah }}</td>
                                         <td class="text-start">

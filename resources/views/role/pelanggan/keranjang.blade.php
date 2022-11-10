@@ -22,8 +22,9 @@
                                     <img src="{{ asset('storage/barang/' . $keranjang->barang->foto) }}" class="rounded-3"
                                         width="125">
                                     <div class="text-end">
+
                                         <h3 class="m-0 fw-semibold">
-                                            Rp. {{ number_format($keranjang->barang->harga * $keranjang->jumlah) }}
+                                            Rp. {{ number_format($keranjang->total) }}
                                         </h3>
                                         <small class="text-black-50 fw-semibold">
                                             ({{ $keranjang->jumlah }}x)

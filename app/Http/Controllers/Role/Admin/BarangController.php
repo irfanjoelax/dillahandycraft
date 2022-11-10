@@ -66,6 +66,7 @@ class BarangController extends Controller
             'kategori_id'   => $request->kategori_id,
             'foto'          => $nameFile,
             'harga'         => $request->harga,
+            'diskon'        => $request->diskon,
             'dilihat'       => 0,
             'deskripsi'     => $request->deskripsi,
         ]);
@@ -127,7 +128,7 @@ class BarangController extends Controller
             'kategori_id'   => $request->kategori_id,
             'foto'          => $nameFile,
             'harga'         => $request->harga,
-            'dilihat'       => 0,
+            'diskon'        => $request->diskon,
             'deskripsi'     => $request->deskripsi,
         ]);
 

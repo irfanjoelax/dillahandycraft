@@ -58,9 +58,22 @@
                 <h6 class="text-uppercase text-black-50">{{ $barang->kategori->nama }}</h6>
                 <h1 class="display-6 fw-bold">
                     {{ $barang->nama }}
+                    @if ($barang->diskon != 0)
+                        <span class="fs-5 badge bg-danger">
+                            <small>Disc {{ $barang->diskon }} %</small>
+                        </span>
+                    @endif
                 </h1>
                 <h3 class="fw-bold text-warning">
-                    Rp. {{ number_format($barang->harga) }}
+                    <span class="">
+                        Rp.
+                        {{ number_format($barang->harga - $barang->harga * ($barang->diskon / 100)) }}
+                    </span>
+                    @if ($barang->diskon != 0)
+                        <span class="fs-6 text-danger text-decoration-line-through">
+                            <small>Rp. {{ number_format($barang->harga) }}</small>
+                        </span>
+                    @endif
                 </h3>
                 <p class="card-text d-flex align-items-center gap-4 mt-3 text-black-50">
                     <span class="d-flex align-items-center gap-2">
@@ -106,8 +119,23 @@
                             </div>
                             <h4 class="card-title fw-bold">
                                 {{ $barang->nama }}
+                                @if ($barang->diskon != 0)
+                                    <span class="fs-6 badge bg-danger">
+                                        <small>Disc {{ $barang->diskon }} %</small>
+                                    </span>
+                                @endif
                             </h4>
-                            <h5 class="fw-semibold">Rp. {{ number_format($barang->harga) }}</h5>
+                            <h5 class="fw-semibold">
+                                <span class="">
+                                    Rp.
+                                    {{ number_format($barang->harga - $barang->harga * ($barang->diskon / 100)) }}
+                                </span>
+                                @if ($barang->diskon != 0)
+                                    <span class="fs-6 text-danger text-decoration-line-through">
+                                        <small>Rp. {{ number_format($barang->harga) }}</small>
+                                    </span>
+                                @endif
+                            </h5>
                             <a href="{{ url('/detail/barang/' . $barang->slug, []) }}" class="btn w-100 btn-primary mt-3">
                                 Detail Barang
                             </a>

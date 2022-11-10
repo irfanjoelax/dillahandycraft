@@ -50,6 +50,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row mb-3">
+                        <label for="nama" class="col-sm-2 col-form-label">Diskon</label>
+                        <div class="col-sm-2">
+                            <div class="input-group mb-3">
+                                <input type="number" class="form-control" name="diskon"
+                                    value="{{ $isEdit ? $barang->diskon : 0 }}" required>
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row mb-4">
                         <label for="file" class="col-sm-2 col-form-label">Foto Barang</label>
                         <div class="col-sm-10">
