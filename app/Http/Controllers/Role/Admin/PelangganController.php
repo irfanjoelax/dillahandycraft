@@ -19,8 +19,9 @@ class PelangganController extends Controller
         $request = $request->all();
 
         return view('role.admin.pelanggan.index', [
-            'request'   => $request,
-            'users'     => $users,
+            'request'    => $request,
+            'users'      => $users,
+            'total_user' => User::count(),
         ]);
     }
 }

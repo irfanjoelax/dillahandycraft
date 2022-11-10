@@ -7,7 +7,7 @@
                 <h3 class="display-5 fw-bold">Daftar Pelanggan</h3>
 
                 <div class="mt-4 mb-3 d-flex align-items-center justify-content-between">
-                    <h4 class="m-0">Jumlah: {{ $users->count() }}</h4>
+                    <h4 class="m-0">Jumlah: {{ $total_user }}</h4>
                     <form action="{{ url('admin/pelanggan') }}" method="GET">
                         <div class="input-group">
                             <input type="search" name="keyword" class="form-control" value="{{ $request['keyword'] ?? '' }}"
