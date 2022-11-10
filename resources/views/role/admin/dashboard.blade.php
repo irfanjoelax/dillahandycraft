@@ -56,5 +56,54 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-6 col-12 mb-3">
+                <div class="card rounded-4">
+                    <div class="card-header  fw-semibold">
+                        Kategori yang Paling Populer
+                    </div>
+                    <div class="card-body">
+                        {!! $chart->renderHtml() !!}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-12 mb-3">
+                <div class="card rounded-4">
+                    <div class="card-header fw-semibold">
+                        Barang yang Paling Populer
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-borderless table-striped">
+                                <thead>
+                                    <tr>
+                                        <th width="60%">Nama Barang</th>
+                                        <th width="27%">Harga</th>
+                                        <th width="13%">Dilihat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($barang_populer as $item)
+                                        <tr>
+                                            <th class="text-start">{{ $item->nama }}</th>
+                                            <td class="text-start">
+                                                Rp. <span class="float-end">{{ number_format($item->harga) }}</span>
+                                            </td>
+                                            <td class="text-center">{{ $item->dilihat }} x</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+@endsection
+
+@section('script')
+    {!! $chart->renderChartJsLibrary() !!}
+    {!! $chart->renderJs() !!}
 @endsection

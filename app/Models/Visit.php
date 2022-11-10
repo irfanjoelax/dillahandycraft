@@ -15,4 +15,9 @@ class Visit extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function kategori()
+    {
+        return $this->hasOne('App\Models\Kategori', 'id', 'kategori_id');
+    }
 }
