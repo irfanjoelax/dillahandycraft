@@ -50,7 +50,7 @@
                                 <td class="text-center">
                                     {{ ($pembelians->currentPage() - 1) * $pembelians->perPage() + $loop->iteration }}
                                 </td>
-                                <td class="text-center">{{ substr($pembelian->created_at, 0, 10) }}</td>
+                                <td class="text-center">{{ tanggal(substr($pembelian->created_at, 0, 10)) }}</td>
                                 <td class="text-start">{{ $pembelian->nama }}</td>
                                 <td class="text-start">
                                     Rp. <span class="float-end">{{ number_format($pembelian->grand_total) }}</span>
@@ -86,8 +86,10 @@
                                 <td class="text-center">
                                     <a href="{{ url('admin/pembelian/' . $pembelian->id . '/detail') }}"
                                         class="btn btn-sm btn-primary">Detail</a>
-                                    <a href="{{ url('admin/pembelian/' . $pembelian->id . '/download') }}"
-                                        class="btn btn-sm btn-warning">Bukti</a>
+                                    @if ($pembelian->bukti_bayar != null)
+                                        <a href="{{ url('admin/pembelian/' . $pembelian->id . '/download') }}"
+                                            class="btn btn-sm btn-warning">Bukti</a>
+                                    @endif
                                 </td>
                             </tr>
                         @empty
