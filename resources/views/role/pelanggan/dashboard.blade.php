@@ -27,7 +27,7 @@
                                             {{ $loop->iteration }}
                                         </td>
                                         <td class="text-center">
-                                            {{ substr($pembelian->created_at, 0, 10) }}
+                                            {{ tanggal(substr($pembelian->created_at, 0, 10)) }}
                                         </td>
                                         <td class="text-start">
                                             Rp. <span class="float-end">{{ number_format($pembelian->grand_total) }}</span>

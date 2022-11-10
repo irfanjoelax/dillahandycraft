@@ -146,7 +146,7 @@ class BarangController extends Controller
     public function destroy($id)
     {
         $barang = Barang::find($id);
-        Storage::delete('barang/' . $barang->file);
+        Storage::delete('barang/' . $barang->foto);
 
         $barang->delete();
 

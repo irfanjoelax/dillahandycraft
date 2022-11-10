@@ -14,7 +14,7 @@
                         </li>
                         <li class="breadcrumb-item">
                             <a class="text-decoration-none fw-semibold"
-                                href="{{ url('/?kategori=' . $barang->kategori->slug) }}">
+                                href="{{ url('/produk?kategori=' . $barang->kategori->slug) }}">
                                 {{ $barang->kategori->nama }}
                             </a>
                         </li>
@@ -96,7 +96,7 @@
         <div class="row">
             <div class="col-md-12 mb-3">
                 <h4 class="fw-bold">Produk Serupa</h4>
-                <h6 class="text-muted m-0">Mungkin Produk Sejenis Yang Kamu Cari</h6>
+                <h6 class="text-muted m-0">Produk Sejenis Yang Kamu Lihat</h6>
             </div>
             @forelse ($barangs as $barang)
                 <div class="col-md-3 col-sm-6 col-12 mb-3">
