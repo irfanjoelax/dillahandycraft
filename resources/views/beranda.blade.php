@@ -15,26 +15,19 @@
             <div class="col-md-12 mb-3">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
+                        @foreach ($banners as $key => $value)
+                            <button type="button" data-bs-target="#carouselExampleIndicators"
+                                data-bs-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}"
+                                aria-label="Slide {{ $loop->iteration }}"></button>
+                        @endforeach
                     </div>
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="{{ asset('img/banner-1.png') }}" class="d-block rounded-4 w-100"
-                                alt="{{ asset('img/banner-1.png') }}">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ asset('img/banner-2.png') }}" class="d-block rounded-4 w-100"
-                                alt="{{ asset('img/banner-2.png') }}">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ asset('img/banner-3.png') }}" class="d-block rounded-4 w-100"
-                                alt="{{ asset('img/banner-3.png') }}">
-                        </div>
+                        @foreach ($banners as $key => $value)
+                            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                <img src="{{ asset('storage/banner/' . $value->file) }}" class="d-block rounded-4 w-100"
+                                    alt="{{ asset('storage/banner/' . $value->file) }}">
+                            </div>
+                        @endforeach
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                         data-bs-slide="prev">

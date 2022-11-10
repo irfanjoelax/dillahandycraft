@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Models\Barang;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
@@ -26,10 +27,11 @@ class BerandaController extends Controller
         $request = $request->all();
 
         return view('beranda', [
-            'request'   => $request,
-            'kategoris' => Kategori::latest()->get(),
-            'barangs'   => $barangs->latest()->paginate(12),
-            'rekomendasis'   => Barang::orderBy('dilihat', 'DESC')->limit(4)->get(),
+            'request'      => $request,
+            'kategoris'    => Kategori::latest()->get(),
+            'barangs'      => $barangs->latest()->paginate(12),
+            'rekomendasis' => Barang::orderBy('dilihat', 'DESC')->limit(4)->get(),
+            'banners'      => Banner::latest()->get(),
         ]);
     }
 }

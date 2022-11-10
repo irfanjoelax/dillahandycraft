@@ -22,6 +22,7 @@ Route::get('/admin/dashboard', [App\Http\Controllers\Role\Admin\DashboardControl
 Route::get('/admin/pelanggan', [App\Http\Controllers\Role\Admin\PelangganController::class, 'index']);
 Route::resource('/admin/kategori', App\Http\Controllers\Role\Admin\KategoriController::class);
 Route::resource('/admin/barang', App\Http\Controllers\Role\Admin\BarangController::class);
+Route::resource('/admin/banner', App\Http\Controllers\Role\Admin\BannerController::class);
 Route::get('/admin/pengaturan', [App\Http\Controllers\Role\Admin\PengaturanController::class, 'index']);
 Route::post('/admin/pengaturan', [App\Http\Controllers\Role\Admin\PengaturanController::class, 'update']);
 Route::get('/admin/pembelian', [App\Http\Controllers\Role\Admin\PembelianController::class, 'index']);

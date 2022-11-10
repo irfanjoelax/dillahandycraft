@@ -72,6 +72,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item me-3">
+                                    <a class="nav-link" href="{{ url('/admin/banner') }}">
+                                        <i class="fa-solid fa-film"></i>
+                                        <span class="ms-1">Banner</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item me-3">
                                     <a class="nav-link" href="{{ url('/admin/kategori') }}">
                                         <i class="fa-solid fa-rectangle-list"></i>
                                         <span class="ms-1">Kategori</span>
