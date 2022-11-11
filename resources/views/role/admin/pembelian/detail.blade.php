@@ -26,7 +26,7 @@
                         <div class="text-end">
                             <h2 class="fw-bold text-primary">Detail Transaksi</h2>
                             <p class="text-muted">
-                                {{ substr($data->created_at, 0, 10) }}
+                                {{ tanggal(substr($data->created_at, 0, 10), true) }}
                             </p>
                         </div>
                     </div>
