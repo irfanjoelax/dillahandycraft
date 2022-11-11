@@ -20,7 +20,13 @@ class BerandaController extends Controller
             ->orderBy('most_visit', 'DESC')
             ->first();
 
-        // dd($visit->kategori_id);
+        if (Auth::check()) {
+            $visit = Visit::selectRaw('count(id) as most_visit, kategori_id')
+                ->groupBy('kategori_id')
+                ->where('user_id', null)
+                ->orderBy('most_visit', 'DESC')
+                ->first();
+        }
 
         $rekomendasis = Barang::where('kategori_id', $visit->kategori_id)->limit(8)->get();
 
