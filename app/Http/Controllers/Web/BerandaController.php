@@ -28,7 +28,11 @@ class BerandaController extends Controller
                 ->first();
         }
 
-        $rekomendasis = Barang::where('kategori_id', $visit->kategori_id)->limit(8)->get();
+        if ($visit != null) {
+            $rekomendasis = Barang::where('kategori_id', $visit->kategori_id)->limit(8)->get();
+        } else {
+            $rekomendasis = Barang::inRandomOrder()->limit(8)->get();
+        }
 
         return view('beranda', [
             'banners'      => Banner::latest()->get(),
